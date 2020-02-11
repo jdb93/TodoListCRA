@@ -1,8 +1,10 @@
 import React from 'react';
 import logo from './logo.svg';
+import Texto from './Texto.js'
 import './App.css';
 
 function App() {
+  let mensajes = ["Hola", "Juan", "Briozzo"];
   return (
     <div className="App">
       <header className="App-header">
@@ -16,7 +18,9 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          {
+            mensajes.map((pal, index) => <Texto msg={pal} key={index} />)
+          }  
         </a>
       </header>
     </div>
