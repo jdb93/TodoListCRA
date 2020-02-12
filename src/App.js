@@ -18,10 +18,10 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          {
-            mensajes.map((pal, index) => <Texto msg={pal} key={index} />)
-          }  
         </a>
+        {
+            mensajes.map((pal, index) => <Texto msg={pal} key={index} />)
+        }  
       </header>
     </div>
   );
