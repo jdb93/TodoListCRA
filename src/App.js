@@ -22,12 +22,18 @@ agregarTarea = () => {
   //entrará si nombre tarea no es undefined, false, null, 0, etc
   
   if(nombreTarea){
-    const nuevaTarea = {nombre: nombreTarea};
+    const nuevaTarea = {nombre: nombreTarea}; //DE ACA SALE NOMBRE PARA LOS METODOS!!!!!
     //setState puede recibir mas de una pareja clave-valor!
     this.setState({ nombreTarea: '', tareas: [...tareas, nuevaTarea]});
   }
 };
 
+
+borrarTarea = (nombre) => {
+  const { tareas } = this.state;
+  const tareasFiltradas = tareas.filter(tarea => tarea.nombre !== nombre);
+  this.setState({ tareas : tareasFiltradas});
+}
   render(){
     const { nombreTarea, tareas } = this.state;
     //Recordar que sobre los input de tipo texto, debemos tener una variable
@@ -58,8 +64,12 @@ agregarTarea = () => {
         id del elemento
         */}
         {
+          tareas.length=== 0
+          ?
+          <p>No hay tareas, anda a laburar</p>
+          :
           tareas.map((tarea, index) => (
-            <Tarea key={index} tarea={tarea}/>
+            <Tarea key={index} tarea={tarea} handleRemoval={this.borrarTarea}/>
           ))
         }
       </div>
